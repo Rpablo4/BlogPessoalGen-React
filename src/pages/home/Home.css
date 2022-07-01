@@ -1,11 +1,15 @@
-.titulo{
-    color: blue;
-    text-align: center;
+.h3Titles{
+    color: white !important;
+    font-weight: bold !important;
 }
-
-.img{
-    width: 500px;
-    height: 500px;
-    display: block;
-    margin: 0 auto;
+.postagensButton{
+    border-color: white !important; 
+    background-color: #3F51B5 !important; 
+    color: white !important;
+}
+.gridPosts{
+    background-color: white !important;
+}
+.gridHero{
+    background-color: #3F51B5 !important;
 }

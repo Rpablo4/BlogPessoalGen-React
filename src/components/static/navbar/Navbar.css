@@ -1,0 +1,11 @@
+.box{
+    cursor:pointer;
+    color: white;
+}
+.navBar{
+    display: flex;
+    justify-content: space-between;
+}
+.appBar{
+    z-index: 1;
+}
