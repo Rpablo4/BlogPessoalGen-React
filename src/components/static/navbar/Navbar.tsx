@@ -16,19 +16,25 @@ function Navbar() {
                     </Box>
                     <Box display="flex">
                         <Box mx={1} className='box'>
+                        <Link to='/home' className='text-decorator-none'>
                             <Typography variant="h6" color="inherit">
                                 home
                             </Typography>
+                        </Link>
                         </Box>
                         <Box mx={1} className='box'>
+                        <Link to='/posts' className='text-decorator-none'>
                             <Typography variant="h6" color="inherit">
                                 postagens
                             </Typography>
+                        </Link>
                         </Box>
                         <Box mx={1} className='box'>
+                        <Link to='/temas' className='text-decorator-none'>
                             <Typography variant="h6" color="inherit">
-                                temas
+                                tema
                             </Typography>
+                        </Link>
                         </Box>
                         <Box mx={1} className='box'>
                             <Typography variant="h6" color="inherit">

@@ -7,6 +7,8 @@ import './App.css';
 import Login from './pages/login/Login';
 import { Typography } from '@material-ui/core';
 import CadastroUsuario from './pages/cadastro/CadastroUsuario';
+import ListaPostagem from './components/static/postagens/listaPostagens/listaPostagem';
+import ListaTema from './components/static/temas/listaTemas/listaTema';
 
 
 function App() {
@@ -15,17 +17,24 @@ function App() {
       <Navbar />
       <Routes>
 
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login  />} />
 
         <Route path="/home" element={<Home />} />
 
         <Route path="/login" element={<Login />} />
 
-        <Route path="/cadastrousuario" element={<CadastroUsuario />} />
-        
+        <Route path="/cadastrousuario" element={<CadastroUsuario/>} />
+
+        <Route path="/temas" element={<ListaTema />} />
+
+        <Route path="/posts" element={<ListaPostagem />} />
+
+
+
       </Routes>
       <Footer />
     </Router>
+
   );
 }
 
