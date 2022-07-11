@@ -9,32 +9,52 @@ import { Typography } from '@material-ui/core';
 import CadastroUsuario from './pages/cadastro/CadastroUsuario';
 import ListaPostagem from './components/static/postagens/listaPostagens/listaPostagem';
 import ListaTema from './components/static/temas/listaTemas/listaTema';
+import CadastroPost from './components/static/postagens/cadastroPost/CadastroPost';
+import DeletarTema from './components/static/temas/deletarTema/DeletarTema';
+import DeletarPostagem from './components/static/postagens/deletePost/DeletePost';
+import CadastrarTema from './components/static/temas/cadastrarTema/CadastrarTema';
+
 
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
+      <div style={{ minHeight: '100vh' }}>
+        <Routes>
 
-        <Route path="/" element={<Login  />} />
-
-        <Route path="/home" element={<Home />} />
-
-        <Route path="/login" element={<Login />} />
-
-        <Route path="/cadastrousuario" element={<CadastroUsuario/>} />
-
-        <Route path="/temas" element={<ListaTema />} />
-
-        <Route path="/posts" element={<ListaPostagem />} />
+          <Route path="/" element={<Login />} />
 
 
 
-      </Routes>
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/home" element={<Home />} />
+
+          <Route path="/cadastrousuario" element={<CadastroUsuario />} />
+
+          <Route path="/temas" element={<ListaTema />} />
+
+          <Route path="/posts" element={<ListaPostagem />} />
+
+          <Route path="/formularioPostagem" element={<CadastroPost />} />
+
+          <Route path="/formularioPostagem/:id" element={<CadastroPost />} />
+
+          <Route path="/formularioTema" element={<CadastrarTema />} />
+
+          <Route path="/formularioTema/:id" element={<CadastrarTema />} />
+
+          <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
+
+          <Route path="/deletarTema/:id" element={<DeletarTema />} />
+
+
+        </Routes>
+      </div>
       <Footer />
-    </Router>
 
+    </Router>
   );
 }
 
