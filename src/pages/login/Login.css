@@ -1,5 +1,6 @@
-.h1Title{
+.h1Title a{
     font-weight: bold;
+    color: black;
 }
 .heroImg{
     z-index: 0; 

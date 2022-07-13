@@ -5,6 +5,7 @@ import { cadastroUsuario } from '../../service/Service';
 import { Link } from 'react-router-dom';
 import { Grid, Box, Typography, TextField, Button } from '@material-ui/core';
 import './CadastroUsuario.css'
+import { toast } from 'react-toastify';
 
 function CadastroUsuario() {
     let navigate = useNavigate();
@@ -43,20 +44,38 @@ function CadastroUsuario() {
             ...user,
             [e.target.name]: e.target.value
         })
-
     }
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         if(confirmarSenha == user.senha){
         cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-        alert('Usuario cadastrado com sucesso')
+        toast.success('Usuário cadastrado com sucesso', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+        });
+        navigate('/login')
         }else{
-            alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+            toast.info('Dados inconsistentes. Favor verificar as informações de cadastro.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            });
         }
     }
     return (
         <Grid container direction='row' justifyContent='center' alignItems='center'>
-            <Grid item xs={6} className='imagem2'></Grid>
+            <Grid item xs={6} className='heroImg'></Grid>
             <Grid item xs={6} alignItems='center'>
                 <Box paddingX={10}>
                     <form onSubmit={onSubmit}>

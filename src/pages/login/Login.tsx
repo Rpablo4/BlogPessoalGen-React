@@ -1,14 +1,16 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Grid, Box, Typography, TextField, Button } from '@material-ui/core';
 import { Link, useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import { login } from '../../service/Service';
 import UserLogin from '../../models/UserLogin';
-import './Login.css';
-
+import { useDispatch } from 'react-redux';
+import { addToken } from "../../store/tokens/actions";
+import './Login.css'
+import { toast } from 'react-toastify';
 function Login() {
     let navigate = useNavigate();
-    const [token, setToken] = useLocalStorage('token');
+    const dispatch = useDispatch();
+    const [token, setToken] = useState('');
     const [userLogin, setUserLogin] = useState<UserLogin>(
         {
             id: 0,
@@ -28,6 +30,7 @@ function Login() {
 
             useEffect(()=>{
                 if(token != ''){
+                    dispatch(addToken(token));
                     navigate('/home')
                 }
             }, [token])
@@ -37,9 +40,27 @@ function Login() {
             try{
                 await login(`/usuarios/logar`, userLogin, setToken)
 
-                alert('Usuário logado com sucesso!');
+                toast.info('Usuário logado com sucesso', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined,
+                });
             }catch(error){
-                alert('Dados do usuário inconsistentes. Erro ao logar!');
+                toast.info('Dados inconsistentes. Favor verificar as informações de cadastro.', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined,
+                });
             }
         }
 
@@ -57,18 +78,18 @@ function Login() {
                                 </Button>
                         </Box>
                     </form>
-                    <Box display='flex' justifyContent='center' marginTop={2}>
+                    <Box display='flex' justifyContent='center' marginTop={2} className='h1Title'>
                         <Box marginRight={1}>
                             <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
                         </Box>
                         <Link to='/cadastrousuario'>
-                            <Typography variant='subtitle1' gutterBottom align='center' className='textos1'>Cadastre-se</Typography>
+                            <Typography variant='subtitle1' gutterBottom align='center' >Cadastre-se</Typography>
                         </Link>
                             
                     </Box>
                 </Box>
             </Grid>
-            <Grid xs={6} className='imagem'>
+            <Grid xs={6} className='heroImg'>
 
             </Grid>
         </Grid>

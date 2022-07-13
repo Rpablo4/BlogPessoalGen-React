@@ -1,9 +1,36 @@
-import React from 'react';
-import {Typography, Grid, Button, Box} from '@material-ui/core';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import {Typography, Grid, Button, Box, TextField} from '@material-ui/core';
 import './Home.css';
 import TabPostagem from '../../components/static/postagens/tabPostagem/tabPostagem';
+import { Link, useNavigate} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokens/tokensReducer';
+import ModalPostagem from '../../components/static/postagens/modalPostagem/ModalPostagem';
+import { toast } from 'react-toastify';
 
 function Home() {
+
+    let navigate = useNavigate();
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+      );
+    
+    useEffect(() => {
+      if (token == "") {
+        toast.info('Você precisa estar logado.', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+        });
+          navigate("/login")
+  
+      }
+  }, [token])
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
@@ -14,6 +41,7 @@ function Home() {
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
+                            <ModalPostagem />
                         </Box>
                         <Button variant="outlined" className='botao'>Ver Postagens</Button>
                     </Box>
