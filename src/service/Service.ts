@@ -1,5 +1,5 @@
 import axios from 'axios';
-import UserLogin from '../models/UserLogin';
+
 
 export const api = axios.create({
     baseURL:'https://bloggeneration.herokuapp.com'
